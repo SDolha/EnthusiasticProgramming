@@ -21,5 +21,12 @@
                 </FrameworkElement.RenderTransform>
             </Polygon>
         </Viewbox>
+        <Thumb DragDelta="Thumb_DragDelta">
+            <Control.Template>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Fill="Transparent"/>
+                </ControlTemplate>
+            </Control.Template>
+        </Thumb>
     </Grid>
 </Window>

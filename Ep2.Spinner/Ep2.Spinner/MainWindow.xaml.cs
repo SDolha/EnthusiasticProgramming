@@ -30,9 +30,18 @@ namespace Ep2.Spinner
             cronometru.Start();
         }
 
+        private double viteza = 0.0;
+        private const double acceleratie = -0.01;
+
         private void Cronometru_Tick(object sender, EventArgs e)
         {
-            RotatieTriunghi.Angle += 0.5;
+            RotatieTriunghi.Angle += 0.05 * viteza;
+            viteza = viteza * (1 + acceleratie);
+        }
+
+        private void Thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            viteza = e.HorizontalChange;
         }
     }
 }
