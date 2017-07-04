@@ -8,25 +8,45 @@
         Title="Spinner" Height="500" Width="500">
     <Grid>
         <Viewbox>
-            <Polygon Stroke="Black" StrokeThickness="4" Points="50,0 100,86.66 0,86.66" Margin="25"
-                     RenderTransformOrigin="0.5,0.66">
-                <Shape.Fill>
-                    <RadialGradientBrush Center="0.5,0.66" GradientOrigin="0.5,0.66">
-                        <GradientStop Offset="0" Color="Blue"/>
-                        <GradientStop Offset="1" Color="Teal"/>
-                    </RadialGradientBrush>
-                </Shape.Fill>
+            <Canvas Width="100" Height="86.66" Margin="60"
+                    RenderTransformOrigin="0.5,0.66">
+                <Polygon Stroke="Black" StrokeThickness="4" Points="50,0 100,86.66 0,86.66">
+                    <Shape.Fill>
+                        <RadialGradientBrush Center="0.5,0.66" GradientOrigin="0.5,0.66">
+                            <GradientStop Offset="0" Color="Blue"/>
+                            <GradientStop Offset="1" Color="Teal"/>
+                        </RadialGradientBrush>
+                    </Shape.Fill>
+                </Polygon>
+                <Ellipse Fill="Teal" Stroke="Black" StrokeThickness="5" 
+                         Canvas.Left="20" Canvas.Top="-30" Width="60" Height="60"/>
+                <Ellipse Fill="Teal" Stroke="Black" StrokeThickness="5" 
+                         Canvas.Left="70" Canvas.Top="56.66" Width="60" Height="60"/>
+                <Ellipse Fill="Teal" Stroke="Black" StrokeThickness="5" 
+                         Canvas.Left="-30" Canvas.Top="56.66" Width="60" Height="60"/>
                 <FrameworkElement.RenderTransform>
                     <RotateTransform x:Name="RotatieTriunghi" Angle="0"/>
                 </FrameworkElement.RenderTransform>
-            </Polygon>
+            </Canvas>
         </Viewbox>
-        <Thumb DragDelta="Thumb_DragDelta">
-            <Control.Template>
-                <ControlTemplate TargetType="Thumb">
-                    <Rectangle Fill="Transparent"/>
-                </ControlTemplate>
-            </Control.Template>
-        </Thumb>
+        <Grid>
+            <FrameworkElement.Resources>
+                <Style TargetType="Thumb">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Thumb">
+                                <Rectangle Fill="Transparent"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </FrameworkElement.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Thumb Grid.Row="0" DragDelta="Thumb_DragDelta"/>
+            <Thumb Grid.Row="1" DragDelta="Thumb_DragDelta" Tag="Invers"/>
+        </Grid>
     </Grid>
 </Window>

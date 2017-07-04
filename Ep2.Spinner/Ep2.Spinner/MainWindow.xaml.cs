@@ -41,7 +41,11 @@ namespace Ep2.Spinner
 
         private void Thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            viteza = e.HorizontalChange;
+            var thumb = sender as FrameworkElement;
+            var directie = +1;
+            if (thumb.Tag as string == "Invers")
+                directie = -1;
+            viteza = directie * e.HorizontalChange;
         }
     }
 }
