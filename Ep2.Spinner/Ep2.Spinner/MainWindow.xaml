@@ -8,7 +8,7 @@
         Title="Spinner" Height="500" Width="500">
     <Grid>
         <Viewbox>
-            <Canvas Width="100" Height="86.66" Margin="60"
+            <Canvas Width="100" Height="86.66" Margin="60,60,60,90"
                     RenderTransformOrigin="0.5,0.66">
                 <Polygon Stroke="Black" StrokeThickness="4" Points="50,0 100,86.66 0,86.66">
                     <Shape.Fill>
