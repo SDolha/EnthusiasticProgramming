@@ -14,7 +14,14 @@ namespace Ep5.Masini
 
             Console.Write("Introduceti cate perechi de timp-viteza aveti: ");
             int câte = int.Parse(Console.ReadLine());
+            CiteșteTimpiȘiViteze(câte, out timpi, out viteze);
 
+            double distanță = CalculareDistanță(câte, timpi, viteze);
+            Console.WriteLine($"Se parcurge distanta de {distanță} km.");
+        }
+
+        private static void CiteșteTimpiȘiViteze(int câte, out double[] timpi, out double[] viteze)
+        {
             timpi = new double[câte];
             viteze = new double[câte];
 
@@ -22,21 +29,24 @@ namespace Ep5.Masini
             {
                 Console.WriteLine($"Perechea {i + 1}:");
 
-                Console.Write("\tIntroduceti timpul (h):");
+                Console.Write("\tIntroduceti timpul (h): ");
                 timpi[i] = double.Parse(Console.ReadLine());
 
                 Console.Write("\tIntroduceti viteza (km/h): ");
                 viteze[i] = double.Parse(Console.ReadLine());
             }
+        }
 
-            double distanță = 0;
+        private static double CalculareDistanță(int câte, double[] timpi, double[] viteze)
+        {
+            double distanțăTotală = 0;
             for (int i = 0; i < câte; i++)
             {
                 double distanțăI = timpi[i] * viteze[i];
-                distanță += distanțăI;
+                distanțăTotală += distanțăI;
             }
 
-            Console.WriteLine($"Se parcurge distanta de {distanță} km.");
+            return distanțăTotală;
         }
     }
 }
