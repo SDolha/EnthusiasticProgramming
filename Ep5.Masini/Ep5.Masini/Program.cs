@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,43 +11,43 @@ namespace Ep5.Masini
     {
         static void Main(string[] args)
         {
-            double[] timpi, viteze;
+            Console.Write("Introduceti cate masini aveti: ");
+            int câteMașini = int.Parse(Console.ReadLine());
 
-            Console.Write("Introduceti cate perechi de timp-viteza aveti: ");
-            int câte = int.Parse(Console.ReadLine());
-            CiteșteTimpiȘiViteze(câte, out timpi, out viteze);
-
-            double distanță = CalculareDistanță(câte, timpi, viteze);
-            Console.WriteLine($"Se parcurge distanta de {distanță} km.");
-        }
-
-        private static void CiteșteTimpiȘiViteze(int câte, out double[] timpi, out double[] viteze)
-        {
-            timpi = new double[câte];
-            viteze = new double[câte];
-
-            for (int i = 0; i < câte; i++)
+            for (int i = 0; i < câteMașini; i++)
             {
-                Console.WriteLine($"Perechea {i + 1}:");
+                Console.WriteLine($"Masina {i + 1}: ");
+                Mașină mașină = CiteșteMașină(i);
 
-                Console.Write("\tIntroduceti timpul (h): ");
-                timpi[i] = double.Parse(Console.ReadLine());
-
-                Console.Write("\tIntroduceti viteza (km/h): ");
-                viteze[i] = double.Parse(Console.ReadLine());
+                double distanța = mașină.DistanțaTotală;
+                Console.WriteLine($"\tSe parcurge distanta de {distanța} km.");
             }
         }
 
-        private static double CalculareDistanță(int câte, double[] timpi, double[] viteze)
+        private static Mașină CiteșteMașină(int i)
         {
-            double distanțăTotală = 0;
-            for (int i = 0; i < câte; i++)
-            {
-                double distanțăI = timpi[i] * viteze[i];
-                distanțăTotală += distanțăI;
-            }
+            Mașină mașină = new Mașină { Nume = $"Mașină { i + 1 }" };
 
-            return distanțăTotală;
+            Console.Write("\tIntroduceti cate parcursuri aveti: ");
+            int câteParcursuri = int.Parse(Console.ReadLine());
+
+            List<Parcurs> parcursuri = new List<Parcurs>();
+
+            for (int j = 0; j < câteParcursuri; j++)
+            {
+                Console.WriteLine($"\tParcursul {j + 1}:");
+
+                Console.Write("\t\tIntroduceti timpul (h): ");
+                double timp = double.Parse(Console.ReadLine());
+
+                Console.Write("\t\tIntroduceti viteza (km/h): ");
+                double viteza = double.Parse(Console.ReadLine());
+
+                parcursuri.Add(new Parcurs { Timp = timp, Viteză = viteza });
+            }
+            mașină.Parcursuri = new ReadOnlyCollection<Parcurs>(parcursuri);
+
+            return mașină;
         }
     }
 }
