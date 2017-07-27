@@ -6,48 +6,55 @@
         xmlns:local="clr-namespace:Ep7.MasiniWindows"
         mc:Ignorable="d"
         Title="Mașini" SizeToContent="WidthAndHeight"
+        MinWidth="400" MinHeight="200"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <StackPanel>
-        <ItemsControl ItemsSource="{Binding Mașini}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Blue" BorderThickness="2" Margin="4" Padding="4">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Mașina: " Width="200" FontWeight="Bold"/>
-                                <TextBox Text="{Binding Nume}" Width="300"/>
-                            </StackPanel>
-                            <ItemsControl ItemsSource="{Binding Parcursuri}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="Timp: " Width="200"/>
-                                                <TextBox Text="{Binding Timp}" Width="300"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="Viteză: " Width="200"/>
-                                                <TextBox Text="{Binding Viteză}" Width="300"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <Button Content="Adaugă parcurs"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Distanța totală: " Width="200"/>
-                                <TextBox Text="{Binding DistanțaTotală, Mode=OneWay}" IsReadOnly="True" Width="300"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <Button Content="Adaugă mașină"/>
-    </StackPanel>
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Content="Adaugă mașină" Click="ButtonAdaugăMașină_Click"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Mașini}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Blue" BorderThickness="2" Margin="4" Padding="4">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                                    <Label Content="Mașina: " Width="100" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding Nume}" Width="150"/>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                                    <Label Content="Distanța totală: " Width="100"/>
+                                    <TextBox Text="{Binding DistanțaTotală, Mode=OneWay}" IsReadOnly="True" Width="150"/>
+                                </StackPanel>
+                                <Button DockPanel.Dock="Bottom" Content="Adaugă parcurs" Click="ButtonAdaugăParcurs_Click"/>
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Parcursuri}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="Green" BorderThickness="1" Margin="2" Padding="2">
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Label Content="Timp: " Width="100"/>
+                                                            <TextBox Text="{Binding Timp, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Label Content="Viteză: " Width="100"/>
+                                                            <TextBox Text="{Binding Viteză, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

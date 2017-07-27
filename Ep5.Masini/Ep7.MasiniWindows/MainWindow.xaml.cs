@@ -26,10 +26,22 @@ namespace Ep7.MasiniWindows
         {
             InitializeComponent();
 
-            Mașini.Add(new Mașină { Nume = "X", Parcursuri = new ObservableCollection<Parcurs>() { new Parcurs { Timp = 2, Viteză = 50 } } });
-            Mașini.Add(new Mașină { Nume = "Y" });
+            //Mașini.Add(new Mașină { Nume = "X", Parcursuri = new ObservableCollection<Parcurs>() { new Parcurs { Timp = 2, Viteză = 50 } } });
+            //Mașini.Add(new Mașină { Nume = "Y" });
         }
 
         public ObservableCollection<Mașină> Mașini { get; set; } = new ObservableCollection<Mașină>();
+
+        private void ButtonAdaugăMașină_Click(object sender, RoutedEventArgs e)
+        {
+            Mașini.Add(new Mașină { Nume = "Mașina nouă" });
+        }
+
+        private void ButtonAdaugăParcurs_Click(object sender, RoutedEventArgs e)
+        {
+            var element = e.Source as FrameworkElement;
+            var mașină = element.DataContext as Mașină;
+            mașină.Parcursuri.Add(new Parcurs());
+        }
     }
 }
