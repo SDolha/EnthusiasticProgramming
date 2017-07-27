@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ep5.Masini
+namespace Ep7.BibliotecaMasini
 {
     public class Mașină
     {
