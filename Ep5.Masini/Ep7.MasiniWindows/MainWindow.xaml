@@ -1,0 +1,53 @@
+﻿<Window x:Class="Ep7.MasiniWindows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ep7.MasiniWindows"
+        mc:Ignorable="d"
+        Title="Mașini" SizeToContent="WidthAndHeight"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <StackPanel>
+        <ItemsControl ItemsSource="{Binding Mașini}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Blue" BorderThickness="2" Margin="4" Padding="4">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Mașina: " Width="200" FontWeight="Bold"/>
+                                <TextBox Text="{Binding Nume}" Width="300"/>
+                            </StackPanel>
+                            <ItemsControl ItemsSource="{Binding Parcursuri}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Timp: " Width="200"/>
+                                                <TextBox Text="{Binding Timp}" Width="300"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Viteză: " Width="200"/>
+                                                <TextBox Text="{Binding Viteză}" Width="300"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Button Content="Adaugă parcurs"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Distanța totală: " Width="200"/>
+                                <TextBox Text="{Binding DistanțaTotală, Mode=OneWay}" IsReadOnly="True" Width="300"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Button Content="Adaugă mașină"/>
+    </StackPanel>
+</Window>

@@ -46,7 +46,7 @@ namespace Ep5.Masini
 
                 parcursuri.Add(new Parcurs { Timp = timp, Viteză = viteza });
             }
-            mașină.Parcursuri = new ReadOnlyCollection<Parcurs>(parcursuri);
+            mașină.Parcursuri = new ObservableCollection<Parcurs>(parcursuri);
 
             return mașină;
         }
