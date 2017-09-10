@@ -1,0 +1,21 @@
+﻿<Window x:Class="Ep12.Thumbs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ep12.Thumbs"
+        mc:Ignorable="d"
+        Title="Thumbs" SizeToContent="WidthAndHeight">
+    <Canvas Width="800" Height="600">
+        <Grid Canvas.Left="20" Canvas.Top="20">
+            <Ellipse Fill="Yellow" Width="80" Height="80"/>
+            <Thumb DragDelta="Thumb_DragDelta" Cursor="Hand">
+                <Thumb.Template>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Fill="Transparent"/>
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Grid>
+    </Canvas>
+</Window>
