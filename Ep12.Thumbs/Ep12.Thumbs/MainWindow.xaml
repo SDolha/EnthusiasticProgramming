@@ -8,7 +8,14 @@
         Title="Thumbs" SizeToContent="WidthAndHeight">
     <Canvas Width="800" Height="600">
         <Grid Canvas.Left="20" Canvas.Top="20">
-            <Ellipse Fill="Yellow" Width="80" Height="80"/>
+            <Canvas Width="80" Height="80">
+                <!-- Head -->
+                <Ellipse Fill="Yellow" Width="80" Height="80"/>
+                <!-- Eyes -->
+                <Ellipse Fill="Blue" Canvas.Left="10" Canvas.Top="20" Width="10" Height="5"/>
+                <Ellipse Fill="Blue" Canvas.Left="60" Canvas.Top="20" Width="10" Height="5"/>
+            </Canvas>
+            <!-- Drag behavior -->
             <Thumb DragDelta="Thumb_DragDelta" Cursor="Hand">
                 <Thumb.Template>
                     <ControlTemplate TargetType="Thumb">
