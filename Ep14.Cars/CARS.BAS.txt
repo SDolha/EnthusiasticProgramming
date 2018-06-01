@@ -1,0 +1,13 @@
+10 RANDOMIZE TIMER                                                              
+20 CLS                                                                          
+30 PRINT "Bun venit!"                                                           
+40 M=70 : V=70 : C=70                                                           
+50 WHILE M>=.5 AND V>=.5 AND C>=.5                                              
+60 LOCATE 12,C : COLOR 14 : PRINT "Cruz "                                       
+70 LOCATE 13,M : COLOR 4 : PRINT "McQueen "                                     
+80 LOCATE 14,V : COLOR 1 : PRINT "Vartej "                                      
+90 M=M-RND : V=V-RND : C=C-RND                                                  
+100 WEND                                                                        
+110 LOCATE 16,1 : COLOR 7 : INPUT "Inca o data (d/n)"; R$                       
+120 IF R$="n" OR R$="N" THEN CLS : END                                          
+130 GOTO 20                                                                     
